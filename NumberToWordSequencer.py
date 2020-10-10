@@ -5,7 +5,6 @@ Created on Fri Oct  9 22:50:40 2020
 @author: batho
 """
 
-import unittest
 import re
 
 def GenerateSequences(sequence):
@@ -50,33 +49,3 @@ def FilterValidStrings(generatedWordList):
         if re.findall('[^A-Za-z]',word):
             generatedWordList.remove(word)
     return generatedWordList
-    
-
-class TestStringMethods(unittest.TestCase):
-
-    def test_individualCharacter(self):
-        wordList=GenerateSequences("1123")
-        self.assertEqual(wordList[0],"aabc")
-    
-    def test_firstTwoLettersCombined(self):
-        wordList=GenerateSequences("1123")
-        self.assertEqual(wordList[1], "kbc")
-    
-    def test_nextTwoLettersCombined(self):
-        wordList=GenerateSequences("1123")
-        self.assertEqual(wordList[2], "alc")
-    
-    def test_lastTwoLettersCombined(self):
-        wordList=GenerateSequences("1123")
-        self.assertEqual(wordList[3],"aaw")
-        
-    def test_lastTwoLettersCombined(self):
-        wordList=GenerateSequences("1123")
-        self.assertEqual(wordList[4],"kw")
-    
-    def test_specialCharacterWordsShouldBeRemoved(self):
-        wordList=GenerateSequences("11231")
-        self.assertEqual(len(wordList),5)
-
-if __name__ == '__main__':
-    unittest.main()
